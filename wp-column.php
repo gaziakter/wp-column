@@ -14,3 +14,11 @@
  * Text Domain:       wp-column
  * Domain Path:       /languages
  */
+
+ /**
+  * Load textdomain
+  */
+ function wpcol_textdomain(){
+    load_textdomain( "wp-column", false, dirname(__FILE__)."/languages" );
+ }
+ add_action( "plugins_loaded", "wpcol_textdomain" )
