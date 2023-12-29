@@ -24,10 +24,10 @@
  add_action( "plugins_loaded", "wpcol_textdomain" );
 
  /**
-  * Remove Tag column
+  * Show new column
   */
 function wpcol_post_column($columns){
-   $columns['price'] = __( 'Price', 'wp-column' );
+   $columns['id'] = __('Post ID', 'wp-column');
    return $columns;
 }
 add_filter( "manage_posts_columns", "wpcol_post_column" );
