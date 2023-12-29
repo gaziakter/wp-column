@@ -24,13 +24,19 @@
  add_action( "plugins_loaded", "wpcol_textdomain" );
 
  /**
-  * change column position
+  * Show new column
   */
 function wpcol_post_column($columns){
-   unset($columns['title']);
    $columns['id'] = __('ID', 'wp-column');
-   $columns['title'] = __('Title', 'wp-column');
-
    return $columns;
 }
 add_filter( "manage_posts_columns", "wpcol_post_column" );
+
+
+/**
+ * get data from database
+ */
+function wpcol_post_column_data($columns, $post_id){
+   echo $post_id;
+}
+add_action( 'manage_posts_custom_column', 'wpcol_post_column_data', 10, 2 );
