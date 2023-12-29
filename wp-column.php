@@ -21,4 +21,13 @@
  function wpcol_textdomain(){
     load_textdomain( "wp-column", false, dirname(__FILE__)."/languages" );
  }
- add_action( "plugins_loaded", "wpcol_textdomain" )
+ add_action( "plugins_loaded", "wpcol_textdomain" );
+
+ /**
+  * Remove Tag column
+  */
+function wpcol_post_column($columns){
+   unset($columns['tags']);
+   return $columns;
+}
+add_filter( "manage_posts_columns", "wpcol_post_column" );
