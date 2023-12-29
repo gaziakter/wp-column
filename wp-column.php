@@ -37,6 +37,9 @@ add_filter( "manage_posts_columns", "wpcol_post_column" );
  * get data from database
  */
 function wpcol_post_column_data($columns, $post_id){
-   echo $post_id;
+   if('id'==$columns){
+      echo $post_id;
+   }
+
 }
 add_action( 'manage_posts_custom_column', 'wpcol_post_column_data', 10, 2 );
