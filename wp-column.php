@@ -28,6 +28,7 @@
   */
 function wpcol_post_column($columns){
    $columns['id'] = __('ID', 'wp-column');
+   $columns['thumbnail'] = __('Thumbnail', 'wp-column');
    return $columns;
 }
 add_filter( "manage_posts_columns", "wpcol_post_column" );
@@ -39,6 +40,9 @@ add_filter( "manage_posts_columns", "wpcol_post_column" );
 function wpcol_post_column_data($columns, $post_id){
    if('id'==$columns){
       echo $post_id;
+   } elseif('thumbnail'==$columns){
+      $thumbnail = get_the_post_thumbnail( $post_id, 'thumbnail' );
+      echo $thumbnail;
    }
 
 }
