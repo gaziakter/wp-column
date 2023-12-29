@@ -29,9 +29,10 @@
 function wpcol_post_column($columns){
    $columns['id'] = __('ID', 'wp-column');
    $columns['thumbnail'] = __('Thumbnail', 'wp-column');
+   $columns['wordcount'] = __('Word Count', 'wp-column');
    return $columns;
 }
-add_filter( "manage_pages_columns", "wpcol_post_column" );
+add_filter( "manage_posts_columns", "wpcol_post_column" );
 
 
 /**
@@ -43,7 +44,13 @@ function wpcol_post_column_data($columns, $post_id){
    } elseif('thumbnail'==$columns){
       $thumbnail = get_the_post_thumbnail( $post_id, array(100, 100) );
       echo $thumbnail;
+   } elseif('wordcount'==$columns){
+      $_post = get_post( $post_id );
+      $content = $_post->post_content;
+      $wordcount = str_word_count(strip_tags($content));
+      echo $wordcount;
+
    }
 
 }
-add_action( 'manage_pages_custom_column', 'wpcol_post_column_data', 10, 2 );
+add_action( 'manage_posts_custom_column', 'wpcol_post_column_data', 10, 2 );
