@@ -27,7 +27,7 @@
   * Remove Tag column
   */
 function wpcol_post_column($columns){
-   unset($columns['tags']);
+   $columns['price'] = __( 'Price', 'wp-column' );
    return $columns;
 }
 add_filter( "manage_posts_columns", "wpcol_post_column" );
