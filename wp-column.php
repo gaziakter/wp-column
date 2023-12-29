@@ -31,7 +31,7 @@ function wpcol_post_column($columns){
    $columns['thumbnail'] = __('Thumbnail', 'wp-column');
    return $columns;
 }
-add_filter( "manage_posts_columns", "wpcol_post_column" );
+add_filter( "manage_pages_columns", "wpcol_post_column" );
 
 
 /**
@@ -46,4 +46,4 @@ function wpcol_post_column_data($columns, $post_id){
    }
 
 }
-add_action( 'manage_posts_custom_column', 'wpcol_post_column_data', 10, 2 );
+add_action( 'manage_pages_custom_column', 'wpcol_post_column_data', 10, 2 );
