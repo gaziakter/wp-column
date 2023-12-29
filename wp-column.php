@@ -41,7 +41,7 @@ function wpcol_post_column_data($columns, $post_id){
    if('id'==$columns){
       echo $post_id;
    } elseif('thumbnail'==$columns){
-      $thumbnail = get_the_post_thumbnail( $post_id, 'thumbnail' );
+      $thumbnail = get_the_post_thumbnail( $post_id, array(100, 100) );
       echo $thumbnail;
    }
 
