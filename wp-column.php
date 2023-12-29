@@ -24,10 +24,13 @@
  add_action( "plugins_loaded", "wpcol_textdomain" );
 
  /**
-  * Show new column
+  * change column position
   */
 function wpcol_post_column($columns){
-   $columns['id'] = __('Post ID', 'wp-column');
+   unset($columns['title']);
+   $columns['id'] = __('ID', 'wp-column');
+   $columns['title'] = __('Title', 'wp-column');
+
    return $columns;
 }
 add_filter( "manage_posts_columns", "wpcol_post_column" );
